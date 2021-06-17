@@ -1,0 +1,58 @@
+/*Header*/
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-links li {
+    margin: 0% 10% 0% 10%;
+}
+
+.nav-links a {
+    font-size: 18px;
+    font-weight: 500;
+    color: #1569CA;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    transition: transform 0.4s;
+}
+
+/*Inputs*/
+::placeholder { 
+  color: #1569CA;
+  opacity: 1;
+}
+
+.inputsmall {
+    width: 99.4%;
+    margin: 40px 0px 0px 0px;
+    border: solid #1569CA 2px;
+    color: #1569CA;
+}
+
+.inputlarge {
+    width: 99.4%;
+    margin: 8px 0px 0px 0px;
+    border: solid #1569CA 2px;
+    height: 100px;
+    color: #1569CA;
+}
+
+.button {
+    width: 100%;
+    margin: 8px 0px 0px 0px;
+    background-color: #1569CA;
+    border: solid #1569CA 2px;
+    color: white;
+}
+
+.filtre {
+    width: 99.4%;
+    margin: 100px 0px 0px 0px;
+    border: solid #1569CA 2px;
+    color: #1569CA;
+}
