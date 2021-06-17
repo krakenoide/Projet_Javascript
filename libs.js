@@ -42,6 +42,8 @@ var libs =  {
 	getMessage: function() {
 		console.log("ca marche");
 		return 'ca marche';
-
 	}
 }
+
+
+module.exports = libs;
