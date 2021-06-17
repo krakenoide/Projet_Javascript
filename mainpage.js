@@ -69,6 +69,16 @@ for (let i=0;i<topiclist.length;i++){
   topic.textContent=`${topiclist[i].title}`;
   document.body.appendChild(topic);
 
+  topic.addEventListener("mouseover", function () {
+      event.preventDefault();
+      event.target.textContent=`${topiclist[i].title} ${topiclist[i].user} ${topiclist[i].date}`;
+  });
+
+  topic.addEventListener("mouseleave", function () {
+      event.preventDefault();
+      event.target.textContent=`${topiclist[i].title}`;
+  });
+
   btnmodif=document.createElement("button");
   btnmodif.setAttribute("class", "btnmodif");
   btnmodif.innerHTML = "Modifier";
@@ -78,6 +88,7 @@ for (let i=0;i<topiclist.length;i++){
   btnsupp.setAttribute("class", "btnsupp");
   btnsupp.innerHTML = "Supprimer";
   topic.appendChild(btnsupp);
+
 }
 
 
@@ -106,4 +117,16 @@ Bouton3.addEventListener("click", function () {
   Bouton1.style.textDecoration="none";
   event.target.style.textDecoration="underline";
   event.target.style.textDecorationThickness= "4px";
+});
+
+button.addEventListener("mouseover", function () {
+  event.preventDefault();
+  event.target.style.color="#1569CA";
+  event.target.style.backgroundColor="white";
+});
+
+button.addEventListener("mouseleave", function () {
+  event.preventDefault();
+  event.target.style.color="white";
+  event.target.style.backgroundColor="#1569CA";
 });
