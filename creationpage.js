@@ -1,5 +1,3 @@
-import index.js;
-
 let display=document.getElementById("display");
 
 let formulaire=document.createElement("form");
@@ -25,28 +23,3 @@ let create=document.createElement("input");
 create.setAttribute("type","submit");
 create.setAttribute("value","Créer un compte");
 formulaire.appendChild(create);
-
-function addInputField (parent,type,placeholder,css_class="inputsmall") {
-	let inputfield=document.createElement("input");
-	inputfield.setAttribute("type",type);
-	inputfield.setAttribute("placeholder",placeholder);
-	inputfield.setAttribute("class",css_class);
-
-	parent.appendChild(inputfield);
-	return inputfield;
-}
-
-class User {
-
-}
-
-
-function getusers(){
-	fetch("http://localhost:8080/api/user", {
-		method:"GET";
-	}
-}
-
-function existAlready (element) {
-	Json.sringify();
-}
