@@ -55,12 +55,30 @@ filtre.setAttribute("class", "filtre");
 filtre.setAttribute("placeholder","Filtre par titre ou par auteur");
 document.body.appendChild(filtre);
 
-/*
-let listesujets= //aller la chercher avec API
-for (let i=0;i<listesujets.length;i++){
 
+let topiclist= [
+ { id: 1, title: "Titre1", user: "user1", date: "date1", content: "message1"},
+ { id: 2, title: "Titre2", user: "user2", date: "date2", content: "message2"},
+ { id: 3, title: "Titre3", user: "user3", date: "date3", content: "message3"},
+ { id: 4, title: "Titre4", user: "user4", date: "date4", content: "message4"},
+];
+
+for (let i=0;i<topiclist.length;i++){
+  let topic=document.createElement('h2');
+  topic.setAttribute("class", "topic");
+  topic.textContent=`${topiclist[i].title}`;
+  document.body.appendChild(topic);
+
+  btnmodif=document.createElement("button");
+  btnmodif.setAttribute("class", "btnmodif");
+  btnmodif.innerHTML = "Modifier";
+  topic.appendChild(btnmodif);
+
+  btnsupp=document.createElement("button");
+  btnsupp.setAttribute("class", "btnsupp");
+  btnsupp.innerHTML = "Supprimer";
+  topic.appendChild(btnsupp);
 }
-*/
 
 
 
