@@ -1,6 +1,3 @@
-import libs from `./libs.js`;
-
-
 let isconnected=false;
 let activepagenumber=1;
 

@@ -1,11 +1,8 @@
 
-class libs {
 
-	constructor() {
+var libs = {
 
-	}
-
-	addInputField(parent, type, placeholder, css_class = "inputsmall") {
+	addInputField: function (parent, type, placeholder, css_class = "inputsmall") {
 		let inputfield = document.createElement("input");
 		inputfield.setAttribute("type", type);
 		inputfield.setAttribute("placeholder", placeholder);
@@ -14,40 +11,38 @@ class libs {
 
 		parent.appendChild(inputfield);
 		return inputfield;
-	}
-	login(username, password) {
+	},
+	login: function (username, password) {
 
-	}
-	creationuser(userName, password, passwordConfirm) {
+	},
+	creationuser: function (userName, password, passwordConfirm) {
 
-	}
-	creationtopic(title, date, author_id) {
+	},
+	creationtopic: function (title, date, author_id) {
 
-	}
-	creationmessage(content, user, date, topic) {
+	},
+	creationmessage: function (content, user, date, topic) {
 
-	}
+	},
 
-	getAllUser() {
+	getAllUser: function () {
 
-	}
-	getUser() {
+	},
+	getUser: function () {
 
-	}
-	getAllTopic() {
+	},
+	getAllTopic: function () {
 
-	}
-	getTopic() {
+	},
+	getTopic: function () {
 
-	}
-	getAllmessage() {
+	},
+	getAllmessage: function () {
 
-	}
-	getMessage() {
+	},
+	getMessage: function () {
 		console.log("ca marche");
 		return 'ca marche';
 
 	}
 }
-const instance = new libs();
-export { instance as libs };
