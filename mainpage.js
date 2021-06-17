@@ -65,7 +65,7 @@ let topiclist= [
 
 for (let i=0;i<topiclist.length;i++){
   let topic=document.createElement('h2');
-  topic.setAttribute("class", "topic");
+  topic.setAttribute("class", "topicline topic");
   topic.textContent=`${topiclist[i].title}`;
   document.body.appendChild(topic);
 
@@ -80,14 +80,14 @@ for (let i=0;i<topiclist.length;i++){
   });
 
   btnmodif=document.createElement("button");
-  btnmodif.setAttribute("class", "btnmodif");
+  btnmodif.setAttribute("class", "topicline btnmodif");
   btnmodif.innerHTML = "Modifier";
-  topic.appendChild(btnmodif);
+  document.body.appendChild(btnmodif);
 
   btnsupp=document.createElement("button");
-  btnsupp.setAttribute("class", "btnsupp");
+  btnsupp.setAttribute("class", "topicline btnsupp");
   btnsupp.innerHTML = "Supprimer";
-  topic.appendChild(btnsupp);
+  document.body.appendChild(btnsupp);
 
 }
 

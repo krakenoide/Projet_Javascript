@@ -52,9 +52,13 @@
     color: #1569CA;
 }
 
+.topicline{
+    display: inline-block;
+}
 
 .topic {
     color: #1569CA;
+    width: 50%;
 }
 
 .btnmodif {
@@ -63,7 +67,7 @@
     border: none;
     width: 100px;
     height: 40px;
-    margin-left: 78.8%;
+    margin-left: 33.95%;
 }
 
 .btnsupp {
