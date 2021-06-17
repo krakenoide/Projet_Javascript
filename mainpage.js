@@ -1,5 +1,9 @@
+import libs from `./libs.js`;
+
+
 let isconnected=false;
 let activepagenumber=1;
+
 
 function updateheader(){
 	header.innerHTML=`<li>
@@ -9,6 +13,8 @@ function updateheader(){
                     <a id="Bouton2" href="">Creer compte</a>
                 </li>
                 <li>
+                ${libs.getMessage()}
+
                     <a id="Bouton3" href="">Se connecter</a>
                 </li>`;
 	return;
