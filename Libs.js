@@ -44,7 +44,7 @@ export class Libs  {
     	})
 		.catch(() => {
 			LoginPage.versLoginPage();
-			afficherSnackbar("Aucun utilisateur n'as été trouvé, veuillez vérifier votre saisie!");	
+			Libs.afficherSnackbar("Aucun utilisateur n'as été trouvé, veuillez vérifier votre saisie!");	
 		});
 	}
 
@@ -62,7 +62,7 @@ export class Libs  {
 		})
     	.catch(() => {
     		creationpage.versCreationPage();
-    		afficherSnackbar("Echec de la création de l'utilisateur");	
+    		Libs.afficherSnackbar("Echec de la création de l'utilisateur");	
     	});
 	}
 
@@ -76,13 +76,15 @@ export class Libs  {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
 			Libs.saveUser(data);
+			Libs.afficherSnackbar("Votre compte a bien été modifié");	
     		return data;
-			afficherSnackbar("Votre compte a bien été modifié");	
-    		versPageAccueil();
+			
 		})
     	.catch(() => {
-    		creationpage.versModifPage();
-    		afficherSnackbar("Une erreur est survenue. Veuillez vérifier votre saisie");	
+			Libs.afficherSnackbar("Une erreur est survenue. Veuillez vérifier votre saisie");	
+    		
+			return null;
+    		
     	});
 	}
 
@@ -99,7 +101,7 @@ export class Libs  {
     	})
     	.catch(() => {
     		versPageAccueil();
-    		afficherSnackbar("Echec de la création du nouveau sujet");	
+    		Libs.afficherSnackbar("Echec de la création du nouveau sujet");	
     	});
 	}
 
@@ -116,7 +118,7 @@ export class Libs  {
     	})
     	.catch(() => {
     		topicpage.versTopicPage(topic_id);
-    		afficherSnackbar("Echec de la création du nouveau message");	
+    		Libs.afficherSnackbar("Echec de la création du nouveau message");	
     	});
 	}
 
@@ -147,7 +149,7 @@ export class Libs  {
 		}).then(data => {
     	return data;})
     	.catch(() => {
-    		afficherSnackbar("Requête invalide");
+    		Libs.afficherSnackbar("Requête invalide");
     	});
 	}
 
@@ -162,7 +164,7 @@ export class Libs  {
 		}).then(data => {
     	return data;})
     	.catch(() => {
-    		afficherSnackbar("Requête invalide");
+    		Libs.afficherSnackbar("Requête invalide");
     	});
 	}
 

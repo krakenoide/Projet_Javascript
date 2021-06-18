@@ -28,12 +28,13 @@ export class ModifPage {
         let newPasswordBis = Libs.addInputField(formulaire, "password", "Confirmer le nouveau mot de passe");
         let oldPassword = Libs.addInputField(formulaire, "password", "Entrer le mot de passe actuel");
        
-        let buttonCreateUser = document.createElement("input");
-        buttonCreateUser.setAttribute("type", "submit");
-        buttonCreateUser.setAttribute("value", "Créer un compte");
-        formulaire.appendChild(buttonCreateUser);
+        let buttonModifUser = document.createElement("input");
+        buttonModifUser.setAttribute("type", "submit");
+        buttonModifUser.setAttribute("class", "button");
+        buttonModifUser.setAttribute("value", "Modifier mon compte");
+        formulaire.appendChild(buttonModifUser);
 
-        buttonCreateUser.addEventListener("click", (event) => {
+        buttonModifUser.addEventListener("click", (event) => {
             event.preventDefault();
             let userActuel = Libs.loadUser();
             let user;
@@ -42,11 +43,35 @@ export class ModifPage {
             } else {
                 user = Libs.modifUser(username.value, newPassword.value, newPasswordBis.value,oldPassword.value);
             }
-            
+
+
+            // To Uncomment when User login will be implemented
+            // if(user==null){
+            //     ModifPage.versModifPage();
+            // } else {
+
+            //     Header.connectedHeader();
+            //     HomePage.versPageAccueil();
+            // }
+
+            // To comment when User login will be implemented
             Header.connectedHeader();
             HomePage.versPageAccueil();
+            
+           
         });
 
+        buttonModifUser.addEventListener("mouseover", function () {
+            event.preventDefault();
+            event.target.style.color = "#1569CA";
+            event.target.style.backgroundColor = "white";
+        });
+
+        buttonModifUser.addEventListener("mouseleave", function () {
+            event.preventDefault();
+            event.target.style.color = "white";
+            event.target.style.backgroundColor = "#1569CA";
+        });
     }
 
 }
