@@ -1,5 +1,8 @@
-import libs from './libs';
-class message {
+import {Libs} from './Libs.js';
+import {User} from './User.js';
+import {Topic} from './Topic.js';
+
+export class Message {
     id;
     author_id;
     content;

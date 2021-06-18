@@ -1,5 +1,11 @@
 function verscreationpage() {
 
+import {Libs} from './Libs.js';
+import {Message} from './Message.js';
+import {User} from './User.js';
+import {Topic} from './Topic.js';
+
+
 let display=document.getElementById("display");
 
 let formulaire=document.createElement("form");

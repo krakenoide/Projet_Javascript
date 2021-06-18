@@ -1,11 +1,10 @@
+import {Message} from './Message.js';
+import {User} from './User.js';
+import {Topic} from './Topic.js';
 
-class libs {
+export class Libs  {
 
-	constructor() {
-
-	}
-
-	addInputField(parent, type, placeholder, css_class = "inputsmall") {
+	static addInputField(parent, type, placeholder, css_class = "inputsmall") {
 		let inputfield = document.createElement("input");
 		inputfield.setAttribute("type", type);
 		inputfield.setAttribute("placeholder", placeholder);
@@ -15,47 +14,46 @@ class libs {
 		parent.appendChild(inputfield);
 		return inputfield;
 	}
-	login(username, password) {
-
-	}
-	creationuser(userName, password, passwordConfirm) {
-
-	}
-	creationtopic(title, date, author_id) {
-
-	}
-	creationmessage(content, user, date, topic) {
+	static logi(username, password) {
 
 	}
 
-	getAllUser() {
+	static creationuser(userName, password, passwordConfirm) {
 
 	}
-	getUser() {
+	static creationtopic(title, date, author_id) {
 
 	}
-	getAllTopic() {
+	static creationmessage(content, user, date, topic) {
 
 	}
-	getTopic() {
+
+	static getAllUser (){
 
 	}
-	getAllmessage() {
+	static getUser (){
 
 	}
-	getMessage() {
+	static getAllTopic(){
+
+	}
+	static getTopic(){
+
+	}
+	static getAllmessage (){
+
+	}
+	static getMessage() {
 		console.log("ca marche");
 		return 'ca marche';
+	}
 
-	saveUser(user) {
+	static saveUser(user) {
 		localStorage.setItem("user",JSON.stringify(user));
 	}
 
-	loadUser() {
+	static loadUser() {
 		return JSON.parse(localStorage.getItem("user"));
 	}
 
-	}
 }
-const instance = new libs();
-export { instance as libs };

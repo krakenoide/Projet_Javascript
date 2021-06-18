@@ -1,9 +1,12 @@
-import libs from `./libs.js`;
-
+import {Libs} from './Libs.js';
+import {Message} from './Message.js';
+import {User} from './User.js';
+import {Topic} from './Topic.js';
 
 let isconnected=false;
 let activepagenumber=1;
 
+document.body.innerHTML+= Libs.getMessage();
 
 function updateheader(){
 	header.innerHTML=`<li>
@@ -13,8 +16,6 @@ function updateheader(){
                     <a id="Bouton2" href="">Creer compte</a>
                 </li>
                 <li>
-                ${libs.getMessage()}
-
                     <a id="Bouton3" href="">Se connecter</a>
                 </li>`;
 	return;
@@ -23,7 +24,7 @@ function updateheader(){
 let header=document.createElement('ul');
 header.setAttribute("class", "nav-links");
 header.innerHTML=`<li>
-                    <a id="Bouton1" href="">Accueil</a>
+                   <a id="Bouton1" href="">Accueil</a>
                 </li>
                 <li>
                     <a id="Bouton2" href="">Modifier mon compte</a>
