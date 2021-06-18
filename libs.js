@@ -47,6 +47,14 @@ class libs {
 		console.log("ca marche");
 		return 'ca marche';
 
+	saveUser(user) {
+		localStorage.setItem("user",JSON.stringify(user));
+	}
+
+	loadUser() {
+		return JSON.parse(localStorage.getItem("user"));
+	}
+
 	}
 }
 const instance = new libs();
