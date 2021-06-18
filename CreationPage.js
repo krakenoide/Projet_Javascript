@@ -1,7 +1,13 @@
 import { Libs } from './Libs.js';
-import { Message } from './Message.js';
 import { User } from './User.js';
 import { Topic } from './Topic.js';
+import { HomePage } from './HomePage.js';
+import { ModifPage } from './ModifPage.js';
+import { TopicPage } from './TopicPage.js';
+import { LoginPage } from './LoginPage.js';
+import { Header } from './Header.js';
+
+
 
 export class CreationPage {
     
@@ -44,11 +50,16 @@ export class CreationPage {
 
         buttonCreateUser.addEventListener("click", (event) => {
             event.preventDefault();
-            creationuser(username.value, password.value, passwordBis.value);
-            let user = login(username.value, password.value);
+            Libs.getUser(1);
+            Libs.creationUser(username.value, password.value, passwordBis.value);
+            let user = Libs.login(username.value, password.value);
             if (remember.checked) {
                 Libs.saveUser(user);
+            } else {
+                Libs.clearStorage();
             }
+
+            HomePage.versPageAccueil();
         });
 
         buttonCreateUser.addEventListener("mouseover", function () {
