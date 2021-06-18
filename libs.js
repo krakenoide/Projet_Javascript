@@ -4,6 +4,19 @@ import {Topic} from './Topic.js';
 
 export class Libs  {
 
+	static clearHeader(){
+
+	}
+
+	static clearDisplay(){
+		let display = document.getElementById("display");
+		display.innerHTML="";
+		if (document.getElementById("form_id")!==null){
+			let formulaire = document.getElementById("form_id");
+			document.body.removeChild(formulaire);
+		}
+	}
+	
 	static addInputField(parent, type, placeholder, css_class = "inputsmall") {
 
 		let inputfield = document.createElement("input");
