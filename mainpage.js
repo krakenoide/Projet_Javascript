@@ -6,7 +6,7 @@ import {Topic} from './Topic.js';
 let isconnected=false;
 let activepagenumber=1;
 
-document.body.innerHTML+= Libs.getMessage();
+Libs.testImportLib();
 
 function updateheader(){
 	header.innerHTML=`<li>
@@ -86,12 +86,12 @@ for (let i=0;i<topiclist.length;i++){
       event.target.textContent=`${topiclist[i].title}`;
   });
 
-  btnmodif=document.createElement("button");
+  let btnmodif=document.createElement("button");
   btnmodif.setAttribute("class", "topicline btnmodif");
   btnmodif.innerHTML = "Modifier";
   document.body.appendChild(btnmodif);
 
-  btnsupp=document.createElement("button");
+  let btnsupp=document.createElement("button");
   btnsupp.setAttribute("class", "topicline btnsupp");
   btnsupp.innerHTML = "Supprimer";
   document.body.appendChild(btnsupp);
@@ -101,7 +101,7 @@ for (let i=0;i<topiclist.length;i++){
 
 
 //eventlistener
-Bouton1=document.getElementById('Bouton1');
+let Bouton1=document.getElementById('Bouton1');
 Bouton1.addEventListener("click", function () { 
   event.preventDefault();
   Bouton2.style.textDecoration="none";
@@ -109,7 +109,7 @@ Bouton1.addEventListener("click", function () {
   event.target.style.textDecoration="underline";
   event.target.style.textDecorationThickness= "4px";
 });
-Bouton2=document.getElementById('Bouton2');
+let Bouton2=document.getElementById('Bouton2');
 Bouton2.addEventListener("click", function () {
   event.preventDefault();
   Bouton1.style.textDecoration="none";
@@ -117,7 +117,7 @@ Bouton2.addEventListener("click", function () {
   event.target.style.textDecoration="underline";
   event.target.style.textDecorationThickness= "4px";
 });
-Bouton3=document.getElementById('Bouton3');
+let Bouton3=document.getElementById('Bouton3');
 Bouton3.addEventListener("click", function () {
   event.preventDefault();
   Bouton2.style.textDecoration="none";
