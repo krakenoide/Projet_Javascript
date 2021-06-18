@@ -39,11 +39,11 @@ export class Libs  {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
     	return data;
-    	mainpage.versPageAccueil();
+    	versPageAccueil();
     	})
 		.catch(() => {
-		LoginPage.versLoginPage();
-		//snackbar:"Aucun utilisateur n'as été trouvé, veuillez vérifier votre saisie!"	
+			LoginPage.versLoginPage();
+			//snackbar:"Aucun utilisateur n'as été trouvé, veuillez vérifier votre saisie!"	
 		});
 	}
 
@@ -56,8 +56,12 @@ export class Libs  {
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
-    	return data;})
-    	.catch(() => {});
+    	return data;
+    	versPageAccueil();
+		})
+    	.catch(() => {
+    		creationpage.versCreationPage();
+    	});
 
 	}
 
