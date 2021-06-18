@@ -5,6 +5,7 @@ import {Topic} from './Topic.js';
 export class Libs  {
 
 	static addInputField(parent, type, placeholder, css_class = "inputsmall") {
+
 		let inputfield = document.createElement("input");
 		inputfield.setAttribute("type", type);
 		inputfield.setAttribute("placeholder", placeholder);
@@ -14,19 +15,20 @@ export class Libs  {
 		parent.appendChild(inputfield);
 		return inputfield;
 	}
-	static logi(username, password) {
+	static login(username, password) {
 
 	}
 
-	static creationuser(userName, password, passwordConfirm) {
+	static creationUser(userName, password, passwordConfirm) {
 
 	}
-	static creationtopic(title, date, author_id) {
+	static creationTopic(title, date, author_id) {
 
 	}
-	static creationmessage(content, user, date, topic) {
+	static creationMessage(content, user, date, topic) {
 
 	}
+
 
 	static getAllUser (){
 
@@ -44,6 +46,7 @@ export class Libs  {
 
 	}
 	static getMessage() {
+
 		console.log("ca marche");
 		return 'ca marche';
 	}
@@ -57,3 +60,4 @@ export class Libs  {
 	}
 
 }
+
