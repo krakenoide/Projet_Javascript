@@ -1,3 +1,6 @@
+import {Libs} from './Libs.js';
+import {Message} from './Message';
+import {Topic} from './Topic';
 
 export class User {
     id;

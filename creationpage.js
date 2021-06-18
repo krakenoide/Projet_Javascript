@@ -1,3 +1,8 @@
+import {Libs} from './Libs.js';
+import {Message} from './Message';
+import {User} from './User';
+import {Topic} from './Topic';
+
 let display=document.getElementById("display");
 
 let formulaire=document.createElement("form");

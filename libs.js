@@ -1,3 +1,6 @@
+import {Message} from './Message';
+import {User} from './User';
+import {Topic} from './Topic';
 
 export class Libs  {
 
