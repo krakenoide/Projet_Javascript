@@ -1,12 +1,12 @@
-import {Message} from './Message.js';
-import {User} from './User.js';
-import {Topic} from './Topic.js';
+import { Message } from './Message.js';
+import { User } from './User.js';
+import { Topic } from './Topic.js';
+import { CreationPage } from './CreationPage.js';
+import { ModifPage } from './ModifPage.js';
+import { TopicPage } from './TopicPage.js';
+import { LoginPage } from './LoginPage.js';
 
 export class Libs  {
-
-	static clearHeader(){
-
-	}
 
 	static clearDisplay(){
 		let display = document.getElementById("display");
@@ -29,17 +29,104 @@ export class Libs  {
 		return inputfield;
 	}
 	static login(username, password) {
-
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost:8080/login", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ username: `${username}`, password: `${password}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(data => {
+    	return data;
+    	versPageAccueil();
+    	})
+		.catch(() => {
+			LoginPage.versLoginPage();
+			afficherSnackbar("Aucun utilisateur n'as été trouvé, veuillez vérifier votre saisie!");	
+		});
 	}
 
 	static creationUser(userName, password, passwordConfirm) {
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost:8080/api/user", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ username: `${username}`, password: `${password}`, passwordConfirm:`${passwordConfirm}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(data => {
+    		return data;
+    		versPageAccueil();
+		})
+    	.catch(() => {
+    		creationpage.versCreationPage();
+    		afficherSnackbar("Echec de la création de l'utilisateur");	
+    	});
 
 	}
+
 	static creationTopic(title, date, author_id) {
-		let newTopic = Topic(title,date,date,)
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost:8080/api/topic", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ title: `${title}`, date: `${date}`, author_id:`${author_id}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(data => {
+			topicpage.versTopicPage(data.id);
+    	})
+    	.catch(() => {
+    		versPageAccueil();
+    		afficherSnackbar("Echec de la création du nouveau sujet");	
+    	});
 	}
-	static creationMessage(content, user, date, topic) {
 
+	static creationMessage(content, user, date, topic_id) {
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost:8080/api/message", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ content: `${content}`, user:`${user}`, date: `${date}`, topic:`${topic_id}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(data => {
+    		topicpage.versTopicPage(topic_id);
+    	})
+    	.catch(() => {
+    		topicpage.versTopicPage(topic_id);
+    		afficherSnackbar("Echec de la création du nouveau message");	
+    	});
+	}
+
+	static getOne(subject,id){
+		const xhr = new XMLHttpRequest();
+		xhr.open("GET", `http://localhost:8080/api/${subject}/${id}`, true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send();
+
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(data => {
+    	return data;})
+    	.catch(() => {
+    		afficherSnackbar("Requête invalide");
+    	});
+	}
+
+	static getAll(subject){
+		const xhr = new XMLHttpRequest();
+		xhr.open("GET", `http://localhost:8080/api/${subject}`, true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ title: `${title}`, date: `${date}`, author_id:`${author_id}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(data => {
+    	return data;})
+    	.catch(() => {
+    		afficherSnackbar("Requête invalide");
+    	});
 	}
 
 	static modifUser(username, newPassword, newPasswordBis, oldPassword){
@@ -47,36 +134,42 @@ export class Libs  {
 	}
 
 	static getAllUser (){
-
+		getAll("user");
 	}
-	static getUser (userID){
-		const url = "/api/user/";
-		
-		fetch(`${url}${userID}`).then(response => response.json())
-			.then(data => {
-				console.log('Success:', data);
-				affichageMeteo(data)
-			})
-			.catch((error) => {
-				console.error('Error:', error);
-			});	
+
+	static getUser (id){
+		getOne("user",id);
 	}
 
 	static getAllTopic(){
-
+		getAll("topic");
 	}
-	static getTopic(){
 
+	static getTopic(id){
+		getOne("topic",id);
 	}
+
 	static getAllmessage (){
+		getAll("message");
+	}
 
+	static getMessage(id) {
+		getOne("message",id);
 	}
-	static getMessage() {
-	
-	}
+
 	static testImportLib() {
 		console.log("import lib marche");
 		return null;
+	}
+
+	static afficherSnackbar(message) {
+		let snack=document.createElement("div");
+		document.body.appendChild(snack);
+		snack.textContent=message;
+		snack.className = "show";
+		setTimeout(function(){
+			document.body.removeChild(snack);
+		},5000);
 	}
 
 	static saveUser(user) {
