@@ -56,11 +56,12 @@ export class Libs  {
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
-    	return data;
-    	versPageAccueil();
+    		return data;
+    		versPageAccueil();
 		})
     	.catch(() => {
     		creationpage.versCreationPage();
+    		//snackbar:"Echec de la création de l'utilisateur"	
     	});
 
 	}
@@ -74,21 +75,29 @@ export class Libs  {
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
+			topicpage.versTopicPage(data.id);
     	})
-    	.catch(() => {});
+    	.catch(() => {
+    		versPageAccueil();
+    		//snackbar:"Echec de la création du nouveau sujet"	
+    	});
 	}
 
-	static creationMessage(content, user, date, topic) {
+	static creationMessage(content, user, date, topic_id) {
 		const xhr = new XMLHttpRequest();
 		xhr.open("POST", "http://localhost:8080/api/message", true);
 		xhr.setRequestHeader("Content-Type", "application/json");
-		xhr.send(JSON.stringify({ content: `${content}`, content:`${content}`, date: `${date}`, author_id:`${author_id}` }));
+		xhr.send(JSON.stringify({ content: `${content}`, user:`${user}`, date: `${date}`, topic:`${topic_id}` }));
 		
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
+    		topicpage.versTopicPage(topic_id);
     	})
-    	.catch(() => {});
+    	.catch(() => {
+    		topicpage.versTopicPage(topic_id);
+    		//snackbar:"Echec de la création du nouveau message"	
+    	});
 	}
 
 	static getOne(subject,id){
