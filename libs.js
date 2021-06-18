@@ -1,8 +1,24 @@
+import {Message} from './Message.js';
+import {User} from './User.js';
+import {Topic} from './Topic.js';
 
+export class Libs  {
 
-var libs = {
+	static clearHeader(){
 
-	addInputField: function (parent, type, placeholder, css_class = "inputsmall") {
+	}
+
+	static clearDisplay(){
+		let display = document.getElementById("display");
+		display.innerHTML="";
+		if (document.getElementById("form_id")!==null){
+			let formulaire = document.getElementById("form_id");
+			document.body.removeChild(formulaire);
+		}
+	}
+	
+	static addInputField(parent, type, placeholder, css_class = "inputsmall") {
+
 		let inputfield = document.createElement("input");
 		inputfield.setAttribute("type", type);
 		inputfield.setAttribute("placeholder", placeholder);
@@ -11,38 +27,51 @@ var libs = {
 
 		parent.appendChild(inputfield);
 		return inputfield;
-	},
-	login: function (username, password) {
-
-	},
-	creationuser: function (userName, password, passwordConfirm) {
-
-	},
-	creationtopic: function (title, date, author_id) {
-
-	},
-	creationmessage: function (content, user, date, topic) {
-
-	},
-
-	getAllUser: function () {
-
-	},
-	getUser: function () {
-
-	},
-	getAllTopic: function () {
-
-	},
-	getTopic: function () {
-
-	},
-	getAllmessage: function () {
-
-	},
-	getMessage: function () {
-		console.log("ca marche");
-		return 'ca marche';
+	}
+	static login(username, password) {
 
 	}
+
+	static creationUser(userName, password, passwordConfirm) {
+
+	}
+	static creationTopic(title, date, author_id) {
+
+	}
+	static creationMessage(content, user, date, topic) {
+
+	}
+
+	static getAllUser (){
+
+	}
+	static getUser (){
+
+	}
+	static getAllTopic(){
+
+	}
+	static getTopic(){
+
+	}
+	static getAllmessage (){
+
+	}
+	static getMessage() {
+	
+	}
+	static testImportLib() {
+		console.log("import lib marche");
+		return null;
+	}
+
+	static saveUser(user) {
+		localStorage.setItem("user",JSON.stringify(user));
+	}
+
+	static loadUser() {
+		return JSON.parse(localStorage.getItem("user"));
+	}
+
 }
+

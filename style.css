@@ -3,12 +3,7 @@
 .nav-links {
     display: flex;
     list-style: none;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-links li {
-    margin: 0% 10% 0% 10%;
+    justify-content: space-evenly;
 }
 
 .nav-links a {
@@ -52,7 +47,33 @@
 
 .filtre {
     width: 99.4%;
-    margin: 100px 0px 0px 0px;
+    margin: 40px 0px 0px 0px;
     border: solid #1569CA 2px;
     color: #1569CA;
+}
+
+.topicline{
+    display: inline-block;
+}
+
+.topic {
+    color: #1569CA;
+    width: 50%;
+}
+
+.btnmodif {
+    color: white;
+    background-color: #1569CA;
+    border: none;
+    width: 100px;
+    height: 40px;
+    margin-left: 33.95%;
+}
+
+.btnsupp {
+    color: white;
+    background-color: red;
+    border: none;
+    width: 100px;
+    height: 40px;
 }
