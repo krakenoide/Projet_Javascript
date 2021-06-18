@@ -1,5 +1,5 @@
 
-class user {
+export class User {
     id;
     userName;
     password;

@@ -1,5 +1,5 @@
-import libs from './libs';
-class topic {
+import {Libs} from './Libs.js';
+export class Topic {
     id;
     title;
     date;

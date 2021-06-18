@@ -1,10 +1,10 @@
-import libs from './libs.js';
+import {Libs} from './Libs.js';
 
-export default = null;
+
 let isconnected=false;
 let activepagenumber=1;
 
-document.body.innerHTML+= libs.getMessage();
+document.body.innerHTML+= Libs.getMessage();
 
 function updateheader(){
 	header.innerHTML=`<li>

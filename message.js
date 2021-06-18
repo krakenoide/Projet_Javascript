@@ -1,5 +1,5 @@
-import libs from './libs';
-class message {
+import {Libs} from './Libs.js';
+export class Message {
     id;
     author_id;
     content;

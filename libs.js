@@ -1,7 +1,7 @@
 
-var libs =  {
+export class Libs  {
 
-	addInputField: function(parent, type, placeholder, css_class = "inputsmall") {
+	static addInputField(parent, type, placeholder, css_class = "inputsmall") {
 		let inputfield = document.createElement("input");
 		inputfield.setAttribute("type", type);
 		inputfield.setAttribute("placeholder", placeholder);
@@ -10,40 +10,38 @@ var libs =  {
 
 		parent.appendChild(inputfield);
 		return inputfield;
-	},
-	login: function(username, password) {
+	}
+	static logi(username, password) {
 
-	},
-	creationuser: function(userName, password, passwordConfirm) {
+	}
 
-	},
-	creationtopic: function(title, date, author_id) {
+	static creationuser(userName, password, passwordConfirm) {
 
-	},
-	creationmessage: function(content, user, date, topic) {
+	}
+	static creationtopic(title, date, author_id) {
 
-	},
+	}
+	static creationmessage(content, user, date, topic) {
 
-	getAllUser: function() {
+	}
 
-	},
-	getUser: function() {
+	static getAllUser (){
 
-	},
-	getAllTopic: function() {
+	}
+	static getUser (){
 
-	},
-	getTopic: function() {
+	}
+	static getAllTopic(){
 
-	},
-	getAllmessage: function() {
+	}
+	static getTopic(){
 
-	},
-	getMessage: function() {
+	}
+	static getAllmessage (){
+
+	}
+	static getMessage() {
 		console.log("ca marche");
 		return 'ca marche';
 	}
 }
-
-
-module.exports = libs;
