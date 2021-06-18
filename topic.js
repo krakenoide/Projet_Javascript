@@ -1,6 +1,6 @@
 import {Libs} from './Libs.js';
-import {Message} from './Message';
-import {User} from './User';
+import {Message} from './Message.js';
+import {User} from './User.js';
 
 export class Topic {
     id;
