@@ -46,9 +46,11 @@ export class Libs  {
 
 	}
 	static getMessage() {
-
-		console.log("ca marche");
-		return 'ca marche';
+	
+	}
+	static testImportLib() {
+		console.log("import lib marche");
+		return null;
 	}
 
 	static saveUser(user) {
