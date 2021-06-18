@@ -41,7 +41,8 @@ export class CreationPage {
 
         buttonCreateUser.addEventListener("click", (event) => {
             event.preventDefault();
-            creationuser(username.value, password.value, passwordBis.value);
+            Libs.getUser(1);
+            Libs.creationUser(username.value, password.value, passwordBis.value);
             let user = login(username.value, password.value);
             if (remember.checked) {
                 Libs.saveUser(user);

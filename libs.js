@@ -29,25 +29,85 @@ export class Libs  {
 		return inputfield;
 	}
 	static login(username, password) {
-
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost:8080/login", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ username: `${username}`, password: `${password}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(user => {
+    	return user;
+		})
+		.catch(() => {});
 	}
 
 	static creationUser(userName, password, passwordConfirm) {
-
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost:8080/api/user", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ username: `${username}`, password: `${password}`, passwordConfirm:`${passwordConfirm}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(user => {
+    	return user;})
+    	.catch(() => {});
 	}
+
 	static creationTopic(title, date, author_id) {
-
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost:8080/api/topic", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ title: `${title}`, date: `${date}`, author_id:`${author_id}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(user => {
+    	})
+    	.catch(() => {});
 	}
-	static creationMessage(content, user, date, topic) {
 
+	static creationMessage(content, user, date, topic) {
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost:8080/api/message", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ content: `${content}`, content:`${content}`, date: `${date}`, author_id:`${author_id}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(user => {
+    	})
+    	.catch(() => {});
 	}
 
 	static getAllUser (){
-
+		const xhr = new XMLHttpRequest();
+		xhr.open("POST", "http://localhost:8080/api/topic", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ title: `${title}`, date: `${date}`, author_id:`${author_id}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(user => {
+    	})
+    	.catch(() => {});
 	}
-	static getUser (){
 
+	static getUser (id){
+		const xhr = new XMLHttpRequest();
+		xhr.open("GET", `http://localhost:8080/api/user/${id}`, true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send();
+
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(user => {
+		console.log(user);
+    	return user;})
+    	.catch(() => {});
 	}
+
 	static getAllTopic(){
 
 	}
