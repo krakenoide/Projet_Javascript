@@ -24,17 +24,20 @@ export class CreationPage {
 
         let remember = document.createElement("input");
         remember.setAttribute("type", "checkbox");
+        remember.setAttribute("class", "rememberme");
         remember.setAttribute("id", "remember");
 
         let rememberLabel = document.createElement("label");
         rememberLabel.setAttribute("for", "remember");
         rememberLabel.textContent = "Se souvenir de moi";
+        rememberLabel.style.color = "#1569CA";
 
         formulaire.appendChild(remember);
         formulaire.appendChild(rememberLabel);
 
 
         let buttonCreateUser = document.createElement("input");
+        buttonCreateUser.setAttribute("class", "button");
         buttonCreateUser.setAttribute("type", "submit");
         buttonCreateUser.setAttribute("value", "Créer un compte");
         formulaire.appendChild(buttonCreateUser);
@@ -46,6 +49,18 @@ export class CreationPage {
             if (remember.checked) {
                 Libs.saveUser(user);
             }
+        });
+
+        buttonCreateUser.addEventListener("mouseover", function () {
+            event.preventDefault();
+            event.target.style.color = "#1569CA";
+            event.target.style.backgroundColor = "white";
+        });
+
+        buttonCreateUser.addEventListener("mouseleave", function () {
+            event.preventDefault();
+            event.target.style.color = "white";
+            event.target.style.backgroundColor = "#1569CA";
         });
 
     }
