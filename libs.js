@@ -43,7 +43,7 @@ export class Libs  {
     	})
 		.catch(() => {
 			LoginPage.versLoginPage();
-			//snackbar:"Aucun utilisateur n'as été trouvé, veuillez vérifier votre saisie!"	
+			afficherSnackbar("Aucun utilisateur n'as été trouvé, veuillez vérifier votre saisie!");	
 		});
 	}
 
@@ -61,7 +61,7 @@ export class Libs  {
 		})
     	.catch(() => {
     		creationpage.versCreationPage();
-    		//snackbar:"Echec de la création de l'utilisateur"	
+    		afficherSnackbar("Echec de la création de l'utilisateur");	
     	});
 
 	}
@@ -79,7 +79,7 @@ export class Libs  {
     	})
     	.catch(() => {
     		versPageAccueil();
-    		//snackbar:"Echec de la création du nouveau sujet"	
+    		afficherSnackbar("Echec de la création du nouveau sujet");	
     	});
 	}
 
@@ -96,7 +96,7 @@ export class Libs  {
     	})
     	.catch(() => {
     		topicpage.versTopicPage(topic_id);
-    		//snackbar:"Echec de la création du nouveau message"	
+    		afficherSnackbar("Echec de la création du nouveau message");	
     	});
 	}
 
@@ -110,7 +110,9 @@ export class Libs  {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
     	return data;})
-    	.catch(() => {});
+    	.catch(() => {
+    		afficherSnackbar("Requête invalide");
+    	});
 	}
 
 	static getAll(subject){
@@ -123,7 +125,9 @@ export class Libs  {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
     	return data;})
-    	.catch(() => {});
+    	.catch(() => {
+    		afficherSnackbar("Requête invalide");
+    	});
 	}
 
 	static getAllUser (){
@@ -153,6 +157,16 @@ export class Libs  {
 	static testImportLib() {
 		console.log("import lib marche");
 		return null;
+	}
+
+	static afficherSnackbar(message) {
+		let snack=document.createElement("div");
+		document.body.appendChild(snack);
+		snack.textContent=message;
+		snack.className = "show";
+		setTimeout(function(){
+			document.body.removeChild(snack);
+		},5000);
 	}
 
 	static saveUser(user) {
