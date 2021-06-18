@@ -6,7 +6,7 @@ import {Topic} from './Topic.js';
 let isconnected=false;
 let activepagenumber=1;
 
-document.body.innerHTML+= Libs.getMessage();
+Libs.testImportLib();
 
 function updateheader(){
 	header.innerHTML=`<li>
@@ -62,17 +62,46 @@ filtre.setAttribute("class", "filtre");
 filtre.setAttribute("placeholder","Filtre par titre ou par auteur");
 document.body.appendChild(filtre);
 
-/*
-let listesujets= //aller la chercher avec API
-for (let i=0;i<listesujets.length;i++){
+
+let topiclist= [
+ { id: 1, title: "Titre1", user: "user1", date: "date1", content: "message1"},
+ { id: 2, title: "Titre2", user: "user2", date: "date2", content: "message2"},
+ { id: 3, title: "Titre3", user: "user3", date: "date3", content: "message3"},
+ { id: 4, title: "Titre4", user: "user4", date: "date4", content: "message4"},
+];
+
+for (let i=0;i<topiclist.length;i++){
+  let topic=document.createElement('h2');
+  topic.setAttribute("class", "topicline topic");
+  topic.textContent=`${topiclist[i].title}`;
+  document.body.appendChild(topic);
+
+  topic.addEventListener("mouseover", function () {
+      event.preventDefault();
+      event.target.textContent=`${topiclist[i].title} ${topiclist[i].user} ${topiclist[i].date}`;
+  });
+
+  topic.addEventListener("mouseleave", function () {
+      event.preventDefault();
+      event.target.textContent=`${topiclist[i].title}`;
+  });
+
+  let btnmodif=document.createElement("button");
+  btnmodif.setAttribute("class", "topicline btnmodif");
+  btnmodif.innerHTML = "Modifier";
+  document.body.appendChild(btnmodif);
+
+  let btnsupp=document.createElement("button");
+  btnsupp.setAttribute("class", "topicline btnsupp");
+  btnsupp.innerHTML = "Supprimer";
+  document.body.appendChild(btnsupp);
 
 }
-*/
 
 
 
 //eventlistener
-Bouton1=document.getElementById('Bouton1');
+let Bouton1=document.getElementById('Bouton1');
 Bouton1.addEventListener("click", function () { 
   event.preventDefault();
   Bouton2.style.textDecoration="none";
@@ -80,7 +109,7 @@ Bouton1.addEventListener("click", function () {
   event.target.style.textDecoration="underline";
   event.target.style.textDecorationThickness= "4px";
 });
-Bouton2=document.getElementById('Bouton2');
+let Bouton2=document.getElementById('Bouton2');
 Bouton2.addEventListener("click", function () {
   event.preventDefault();
   Bouton1.style.textDecoration="none";
@@ -88,11 +117,23 @@ Bouton2.addEventListener("click", function () {
   event.target.style.textDecoration="underline";
   event.target.style.textDecorationThickness= "4px";
 });
-Bouton3=document.getElementById('Bouton3');
+let Bouton3=document.getElementById('Bouton3');
 Bouton3.addEventListener("click", function () {
   event.preventDefault();
   Bouton2.style.textDecoration="none";
   Bouton1.style.textDecoration="none";
   event.target.style.textDecoration="underline";
   event.target.style.textDecorationThickness= "4px";
+});
+
+button.addEventListener("mouseover", function () {
+  event.preventDefault();
+  event.target.style.color="#1569CA";
+  event.target.style.backgroundColor="white";
+});
+
+button.addEventListener("mouseleave", function () {
+  event.preventDefault();
+  event.target.style.color="white";
+  event.target.style.backgroundColor="#1569CA";
 });

@@ -3,6 +3,8 @@ import {Message} from './Message.js';
 import {User} from './User.js';
 import {Topic} from './Topic.js';
 
+function verscreationpage() {
+
 let display=document.getElementById("display");
 
 let formulaire=document.createElement("form");
@@ -24,7 +26,17 @@ formulaire.appendChild(remember);
 formulaire.appendChild(rememberlabel);
 
 
-let create=document.createElement("input");
+let createbutton=document.createElement("input");
 create.setAttribute("type","submit");
 create.setAttribute("value","Créer un compte");
 formulaire.appendChild(create);
+
+createbutton.addEventListener("click", (event) => {
+	event.preventDefault();
+	creationuser(username.value,password.value,passwordbis.value);
+	let user=login(username.value,password.value);
+	if (remember.checked) {
+		saveUser(user);
+	}
+}
+}
