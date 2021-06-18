@@ -46,17 +46,11 @@ export class Header {
 
         let buttonModifCompte = document.getElementById('buttonModifCompte');
         buttonModifCompte.addEventListener("click", function () {
-<<<<<<< HEAD
             event.preventDefault();
             buttonPageAccueil.style.textDecoration = "none";
             buttonLogout.style.textDecoration = "none";
-            event.target.style.textDecoration = "underline";
-            event.target.style.textDecorationThickness = "4px";
-            
-=======
             underlineTarget(event);
-           
->>>>>>> a3ab97e01b52f221d2988ce1c966ecc5a9040a99
+
             ModifPage.versModifPage();
 
         });
