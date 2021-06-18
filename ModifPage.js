@@ -8,8 +8,6 @@ import { TopicPage } from './TopicPage.js';
 import { LoginPage } from './LoginPage.js';
 import { Header } from './Header.js';
 
-
-
 export class ModifPage {
 
     constructor(){
@@ -44,7 +42,8 @@ export class ModifPage {
             } else {
                 user = Libs.modifUser(username.value, newPassword.value, newPasswordBis.value,oldPassword.value);
             }
-        
+            
+            Header.connectedHeader();
             HomePage.versPageAccueil();
         });
 

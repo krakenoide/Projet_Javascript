@@ -8,10 +8,10 @@ import { ModifPage } from './ModifPage.js';
 import { TopicPage } from './TopicPage.js';
 import { LoginPage } from './LoginPage.js';
 
+
 export class Header {
 
-    
-    static addHeaderButtonEventListenersini() {
+    static addHeaderButtonEventListenersNotConnected() {
         
         let buttonPageAccueil = document.getElementById('buttonPageAccueil');
         underlineMyButton(buttonPageAccueil);
@@ -34,7 +34,7 @@ export class Header {
         });       
     }
 
-    static addHeaderButtonEventListenersupdate() {
+    static addHeaderButtonEventListenersConnected() {
         let buttonPageAccueil = document.getElementById('buttonPageAccueil');
         underlineMyButton(buttonPageAccueil);
         buttonPageAccueil.addEventListener("click", function () {
@@ -54,12 +54,12 @@ export class Header {
         let buttonLogout = document.getElementById('buttonLogout');
         buttonLogout.addEventListener("click", function () {
             event.preventDefault();
-            Header.intializeHeader();
+            Header.notConnectedHeader();
             HomePage.versPageAccueil();
         });
     }
 
-    static intializeHeader() {
+    static notConnectedHeader() {
         document.getElementById("header");
         header.innerHTML = `<li>
                      <a id="buttonPageAccueil" href="">Accueil</a>
@@ -70,10 +70,10 @@ export class Header {
                   <li>
                       <a id="buttonLogin" href="">Se connecter</a>
                   </li>`;
-        Header.addHeaderButtonEventListenersini();
+        Header.addHeaderButtonEventListenersNotConnected();
     }
 
-    static updateheader() {
+    static connectedHeader() {
         document.getElementById("header");
         header.innerHTML = `<li>
                       <a id="buttonPageAccueil" href="">Accueil</a>
@@ -84,7 +84,7 @@ export class Header {
                   <li>
                       <a id="buttonLogout" href="">Se déconnecter</a>
                   </li>`;
-        Header.addHeaderButtonEventListenersupdate();
+        Header.addHeaderButtonEventListenersConnected();
     }
 
 }

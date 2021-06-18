@@ -55,7 +55,7 @@ export class CreationPage {
             } else {
                 Libs.clearStorage();
             }
-
+            Header.connectedHeader();
             HomePage.versPageAccueil();
         });
 

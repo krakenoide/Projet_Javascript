@@ -46,7 +46,7 @@ export class LoginPage {
 
         buttonConnectUser.addEventListener("click", (event) => {
             event.preventDefault();
-            Header.updateheader();
+            Header.connectedHeader();
             HomePage.versPageAccueil();
         });
     }

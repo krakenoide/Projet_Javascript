@@ -41,7 +41,6 @@ export class Libs  {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
     	return data;
-    	versPageAccueil();
     	})
 		.catch(() => {
 			LoginPage.versLoginPage();
@@ -59,7 +58,7 @@ export class Libs  {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
     		return data;
-    		versPageAccueil();
+			
 		})
     	.catch(() => {
     		creationpage.versCreationPage();
