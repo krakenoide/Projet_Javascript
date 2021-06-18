@@ -41,9 +41,7 @@ export class Header {
             event.target.style.textDecoration = "underline";
             event.target.style.textDecorationThickness = "4px";
             Libs.clearDisplay();
-        });
-
-       
+        });        
     }
 
     static intializeHeader() {

@@ -36,7 +36,7 @@ export class Libs  {
 
 	}
 	static creationTopic(title, date, author_id) {
-
+		let newTopic = Topic(tille)
 	}
 	static creationMessage(content, user, date, topic) {
 
@@ -45,9 +45,19 @@ export class Libs  {
 	static getAllUser (){
 
 	}
-	static getUser (){
-
+	static getUser (userID){
+		const url = "/api/user/";
+		
+		fetch(`${url}${userID}`).then(response => response.json())
+			.then(data => {
+				console.log('Success:', data);
+				affichageMeteo(data)
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});	
 	}
+
 	static getAllTopic(){
 
 	}

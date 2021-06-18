@@ -15,6 +15,7 @@ function main() {
   let activepagenumber = 1;
 
   Libs.testImportLib();
+  Libs.getUser(1);
 
   let header = document.createElement('ul');
   header.setAttribute("id","header");
