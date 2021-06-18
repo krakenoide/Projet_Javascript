@@ -10,70 +10,102 @@ import { LoginPage } from './LoginPage.js';
 
 export class Header {
 
-    static addHeaderButtonEventListeners() {
-        //eventlistener
-        let buttonPageAccueil = document.getElementById('Bouton1');
+    static addHeaderButtonEventListenersini() {
+        
+        let buttonPageAccueil = document.getElementById('buttonPageAccueil');
+        buttonPageAccueil.style.textDecoration = "underline";
+        buttonPageAccueil.style.textDecorationThickness = "4px";
         buttonPageAccueil.addEventListener("click", function () {
             event.preventDefault();
-            buttonCompte.style.textDecoration = "none";
-            buttonLoginLogout.style.textDecoration = "none";
+            buttonCreateCompte.style.textDecoration = "none";
+            buttonLogin.style.textDecoration = "none";
             event.target.style.textDecoration = "underline";
             event.target.style.textDecorationThickness = "4px";
 
             HomePage.versPageAccueil();
 
         });
-        let buttonCompte = document.getElementById('Bouton2');
-        buttonCompte.addEventListener("click", function () {
+        let buttonCreateCompte = document.getElementById('buttonCreateCompte');
+        buttonCreateCompte.addEventListener("click", function () {
             event.preventDefault();
             buttonPageAccueil.style.textDecoration = "none";
-            buttonLoginLogout.style.textDecoration = "none";
+            buttonLogin.style.textDecoration = "none";
             event.target.style.textDecoration = "underline";
             event.target.style.textDecorationThickness = "4px";
 
             CreationPage.versCreationPage();
         });
-        let buttonLoginLogout = document.getElementById('Bouton3');
-        buttonLoginLogout.addEventListener("click", function () {
+        let buttonLogin = document.getElementById('buttonLogin');
+        buttonLogin.addEventListener("click", function () {
             event.preventDefault();
-            buttonCompte.style.textDecoration = "none";
+            buttonCreateCompte.style.textDecoration = "none";
             buttonPageAccueil.style.textDecoration = "none";
             event.target.style.textDecoration = "underline";
             event.target.style.textDecorationThickness = "4px";
-            Libs.clearDisplay();
+
+            LoginPage.versLoginPage();
+        });       
+    }
+
+    static addHeaderButtonEventListenersupdate() {
+        let buttonPageAccueil = document.getElementById('buttonPageAccueil');
+        buttonPageAccueil.style.textDecoration = "underline";
+        buttonPageAccueil.style.textDecorationThickness = "4px";
+        buttonPageAccueil.addEventListener("click", function () {
+            event.preventDefault();
+            buttonModifCompte.style.textDecoration = "none";
+            buttonLogout.style.textDecoration = "none";
+            event.target.style.textDecoration = "underline";
+            event.target.style.textDecorationThickness = "4px";
+
+            HomePage.versPageAccueil();
+
         });
 
-       
+        let buttonModifCompte = document.getElementById('buttonModifCompte');
+        buttonModifCompte.addEventListener("click", function () {
+            event.preventDefault();
+            buttonPageAccueil.style.textDecoration = "none";
+            buttonLogout.style.textDecoration = "none";
+            event.target.style.textDecoration = "underline";
+            event.target.style.textDecorationThickness = "4px";
+            //rajout redirection
+
+        });
+        let buttonLogout = document.getElementById('buttonLogout');
+        buttonLogout.addEventListener("click", function () {
+            event.preventDefault();
+            Header.intializeHeader();
+            HomePage.versPageAccueil();
+        });
     }
 
     static intializeHeader() {
         document.getElementById("header");
         header.innerHTML = `<li>
-                     <a id="Bouton1" href="">Accueil</a>
+                     <a id="buttonPageAccueil" href="">Accueil</a>
                   </li>
                   <li>
-                      <a id="Bouton2" href="">Modifier mon compte</a>
+                      <a id="buttonCreateCompte" href="">Créer compte</a>
                   </li>
                   <li>
-                      <a id="Bouton3" href="">Se déconnecter</a>
+                      <a id="buttonLogin" href="">Se connecter</a>
                   </li>`;
-        Header.addHeaderButtonEventListeners();
+        Header.addHeaderButtonEventListenersini();
     }
 
     static updateheader() {
         document.getElementById("header");
         header.innerHTML = `<li>
-                      <a id="Bouton1" href="">Accueil</a>
+                      <a id="buttonPageAccueil" href="">Accueil</a>
                   </li>
                   <li>
-                      <a id="Bouton2" href="">Creer compte</a>
+                      <a id="buttonModifCompte" href="">Modifier mon compte</a>
                   </li>
                   <li>
-                      <a id="Bouton3" href="">Se connecter</a>
+                      <a id="buttonLogout" href="">Se déconnecter</a>
                   </li>`;
-        Header.addHeaderButtonEventListeners();
-        return;
-
+        Header.addHeaderButtonEventListenersupdate();
     }
 
 

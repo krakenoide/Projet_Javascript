@@ -14,8 +14,6 @@ function main() {
   let isconnected = false;
   let activepagenumber = 1;
 
-  Libs.testImportLib();
-
   let header = document.createElement('ul');
   header.setAttribute("id","header");
   header.setAttribute("class", "nav-links");
