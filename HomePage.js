@@ -73,6 +73,12 @@ export class HomePage {
                 event.target.textContent = `${topiclist[i].title}`;
             });
 
+            topic.addEventListener("click", function () {
+                event.preventDefault();
+                //TODO change i to actual Topic ID
+                TopicPage.versTopicPage(i);
+            });
+
             let btnmodif = document.createElement("button");
             btnmodif.setAttribute("class", "topicline btnmodif");
             btnmodif.innerHTML = "Modifier";

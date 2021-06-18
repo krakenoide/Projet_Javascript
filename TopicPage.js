@@ -15,16 +15,18 @@ export class TopicPage {
 
     }
 
-    static versTopicPage() {
+    static versTopicPage(TopicID) {
         
         Libs.clearDisplay();
 
-        
-        let display = document.body;
+        let display = document.getElementById('display')
         let title = document.createElement('h1');
         title.setAttribute("class", "topicline topic");
         //let title = document.createElement('h1');
         display.appendChild(title);
+
+        //Topic = Libs.getTopic(TopicID);
+
 
         title.textContent ="titre du topic"
         let date_user = document.createElement('h6');
@@ -55,8 +57,6 @@ export class TopicPage {
         message2.appendChild(contentmessage2);
         contentmessage2.textContent="contenue du message";
         
-        
-
         let newmessage = Libs.addInputField(display, "text", "contenue du message");
         let button_send = document.createElement('button');
         button_send.textContent="Repondre au sujet";
