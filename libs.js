@@ -81,45 +81,59 @@ export class Libs  {
     	.catch(() => {});
 	}
 
-	static getAllUser (){
+	static getOne(subject,id){
 		const xhr = new XMLHttpRequest();
-		xhr.open("POST", "http://localhost:8080/api/topic", true);
-		xhr.setRequestHeader("Content-Type", "application/json");
-		xhr.send(JSON.stringify({ title: `${title}`, date: `${date}`, author_id:`${author_id}` }));
-		
-		new Promise((resolve, reject) => {
-   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
-		}).then(user => {
-    	})
-    	.catch(() => {});
-	}
-
-	static getUser (id){
-		const xhr = new XMLHttpRequest();
-		xhr.open("GET", `http://localhost:8080/api/user/${id}`, true);
+		xhr.open("GET", `http://localhost:8080/api/${subject}/${id}`, true);
 		xhr.setRequestHeader("Content-Type", "application/json");
 		xhr.send();
 
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(user => {
-		console.log(user);
-    	return user;})
+		console.log(data);
+    	return data;})
     	.catch(() => {});
 	}
 
+	static getAll(subject){
+		const xhr = new XMLHttpRequest();
+		xhr.open("GET", `http://localhost:8080/api/${subject}`, true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ title: `${title}`, date: `${date}`, author_id:`${author_id}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(data => {
+    	})
+    	.catch(() => {});
+	}
+
+	static getAllUser (){
+		getAll("user");
+	}
+
+	static getUser (id){
+		getOne("user",id);
+	}
+
 	static getAllTopic(){
-
+		getAll("topic");
 	}
-	static getTopic(){
 
+	static getTopic(id){
+		getOne("topic",id);
 	}
-	static getAllmessage (){
 
-	}
-	static getMessage() {
 	
+
+	static getAllmessage (){
+		getAll("message");
 	}
+
+	static getMessage(id) {
+		getOne("message",id);
+	}
+
 	static testImportLib() {
 		console.log("import lib marche");
 		return null;
