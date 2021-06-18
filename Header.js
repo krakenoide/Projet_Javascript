@@ -10,70 +10,45 @@ import { LoginPage } from './LoginPage.js';
 
 export class Header {
 
+
     static addHeaderButtonEventListenersini() {
         
         let buttonPageAccueil = document.getElementById('buttonPageAccueil');
-        buttonPageAccueil.style.textDecoration = "underline";
-        buttonPageAccueil.style.textDecorationThickness = "4px";
+        underlineMyButton(buttonPageAccueil);
         buttonPageAccueil.addEventListener("click", function () {
-            event.preventDefault();
-            buttonCreateCompte.style.textDecoration = "none";
-            buttonLogin.style.textDecoration = "none";
-            event.target.style.textDecoration = "underline";
-            event.target.style.textDecorationThickness = "4px";
-
+            underlineTarget(event);
             HomePage.versPageAccueil();
 
         });
         let buttonCreateCompte = document.getElementById('buttonCreateCompte');
         buttonCreateCompte.addEventListener("click", function () {
-            event.preventDefault();
-            buttonPageAccueil.style.textDecoration = "none";
-            buttonLogin.style.textDecoration = "none";
-            event.target.style.textDecoration = "underline";
-            event.target.style.textDecorationThickness = "4px";
-
+            underlineTarget(event);
+           
             CreationPage.versCreationPage();
         });
         let buttonLogin = document.getElementById('buttonLogin');
         buttonLogin.addEventListener("click", function () {
-            event.preventDefault();
-            buttonCreateCompte.style.textDecoration = "none";
-            buttonPageAccueil.style.textDecoration = "none";
-            event.target.style.textDecoration = "underline";
-            event.target.style.textDecorationThickness = "4px";
-<<<<<<< HEAD
-            Libs.clearDisplay();
-        });        
-=======
-
+            underlineTarget(event);
+        
             LoginPage.versLoginPage();
         });       
     }
 
     static addHeaderButtonEventListenersupdate() {
         let buttonPageAccueil = document.getElementById('buttonPageAccueil');
-        buttonPageAccueil.style.textDecoration = "underline";
-        buttonPageAccueil.style.textDecorationThickness = "4px";
+        underlineMyButton(buttonPageAccueil);
         buttonPageAccueil.addEventListener("click", function () {
-            event.preventDefault();
-            buttonModifCompte.style.textDecoration = "none";
-            buttonLogout.style.textDecoration = "none";
-            event.target.style.textDecoration = "underline";
-            event.target.style.textDecorationThickness = "4px";
-
+            underlineTarget(event);
+            
             HomePage.versPageAccueil();
 
         });
 
         let buttonModifCompte = document.getElementById('buttonModifCompte');
         buttonModifCompte.addEventListener("click", function () {
-            event.preventDefault();
-            buttonPageAccueil.style.textDecoration = "none";
-            buttonLogout.style.textDecoration = "none";
-            event.target.style.textDecoration = "underline";
-            event.target.style.textDecorationThickness = "4px";
-            //rajout redirection
+            underlineTarget(event);
+           
+            ModifPage.vaVersModifPage();
 
         });
         let buttonLogout = document.getElementById('buttonLogout');
@@ -82,7 +57,6 @@ export class Header {
             Header.intializeHeader();
             HomePage.versPageAccueil();
         });
->>>>>>> developbrice
     }
 
     static intializeHeader() {
@@ -113,5 +87,39 @@ export class Header {
         Header.addHeaderButtonEventListenersupdate();
     }
 
+}
+
+function underlineTarget(event){
+    resetTextDecoration();
+    event.preventDefault();
+    event.target.style.textDecoration = "underline";
+    event.target.style.textDecorationThickness = "4px";
+}
+
+function underlineMyButton(b){
+    resetTextDecoration();
+    b.style.textDecoration = "underline";
+    b.style.textDecorationThickness = "4px";
+}
+
+function resetTextDecoration(){
+    let bPA = document.getElementById('buttonPageAccueil');
+    bPA.style.textDecoration = "none";
+    let bMC = document.getElementById('buttonModifCompte');
+    if(bMC != null){
+        bMC.style.textDecoration = "none";
+    }
+    let bCC = document.getElementById('buttonCreateCompte');
+    if(bCC != null){
+        bCC.style.textDecoration = "none";
+    }
+    let bLout = document.getElementById('buttonLogout');
+    if(bLout != null){
+        bLout.style.textDecoration = "none";
+    }
+    let bLin = document.getElementById('buttonLogin');
+    if(bLin != null){
+        bLin.style.textDecoration = "none";
+    }
 
 }

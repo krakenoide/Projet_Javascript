@@ -36,10 +36,14 @@ export class Libs  {
 
 	}
 	static creationTopic(title, date, author_id) {
-		let newTopic = Topic(tille)
+		let newTopic = Topic(title,date,date,)
 	}
 	static creationMessage(content, user, date, topic) {
 
+	}
+
+	static modifUser(username, newPassword, newPasswordBis, oldPassword){
+		
 	}
 
 	static getAllUser (){
