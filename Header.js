@@ -69,18 +69,20 @@ export class Header {
             buttonLogout.style.textDecoration = "none";
             event.target.style.textDecoration = "underline";
             event.target.style.textDecorationThickness = "4px";
-            //rajout redirection
+            
+            ModifPage.versModifPage();
 
         });
         let buttonLogout = document.getElementById('buttonLogout');
         buttonLogout.addEventListener("click", function () {
             event.preventDefault();
-            Header.intializeHeader();
+            Header.initializeheader();
+
             HomePage.versPageAccueil();
         });
     }
 
-    static intializeHeader() {
+    static initializeheader() {
         document.getElementById("header");
         header.innerHTML = `<li>
                      <a id="buttonPageAccueil" href="">Accueil</a>

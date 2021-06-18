@@ -20,7 +20,7 @@ function main() {
 
   document.body.appendChild(header);
 
-  Header.intializeHeader();
+  Header.initializeheader();
 
   let myDiv = document.createElement('div');
   myDiv.id = "display";
