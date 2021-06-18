@@ -120,6 +120,22 @@ export class Libs  {
     	});
 	}
 
+	static delete(subject,id) {
+		const xhr = new XMLHttpRequest();
+		xhr.open("DELETE", `http://localhost:8080/api/${subject}/${id}`, true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send();
+
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(data => {
+			afficherSnackbar("Supression réussi");
+    	})
+    	.catch(() => {
+    		afficherSnackbar("Echec de la suppression");
+    	});
+	}
+
 	static getOne(subject,id){
 		const xhr = new XMLHttpRequest();
 		xhr.open("GET", `http://localhost:8080/api/${subject}/${id}`, true);
@@ -158,6 +174,10 @@ export class Libs  {
 		Libs.getOne("user",id);
 	}
 
+	static deleteUser(id){
+		Libs.delete("user",id);
+	}
+
 	static getAllTopic(){
 		Libs.getAll("topic");
 	}
@@ -166,12 +186,20 @@ export class Libs  {
 		Libs.getOne("topic",id);
 	}
 
+	static deleteTopic(id){
+		Libs.delete("topic",id);
+	}
+
 	static getAllmessage (){
 		Libs.getAll("message");
 	}
 
 	static getMessage(id) {
 		Libs.getOne("message",id);
+	}
+
+	static deleteMessage(id){
+		Libs.delete("message",id);
 	}
 
 	static testImportLib() {
