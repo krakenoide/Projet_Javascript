@@ -1,12 +1,13 @@
-import {Message} from './Message.js';
-import {User} from './User.js';
-import {Topic} from './Topic.js';
+import { Libs } from './Libs.js';
+import { Message } from './Message.js';
+import { User } from './User.js';
+import { Topic } from './Topic.js';
+import { CreationPage } from './CreationPage.js';
+import { ModifPage } from './ModifPage.js';
+import { TopicPage } from './TopicPage.js';
+import { LoginPage } from './LoginPage.js';
 
 export class Libs  {
-
-	static clearHeader(){
-
-	}
 
 	static clearDisplay(){
 		let display = document.getElementById("display");
@@ -36,10 +37,14 @@ export class Libs  {
 		
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
-		}).then(user => {
-    	return user;
-		})
-		.catch(() => {});
+		}).then(data => {
+    	return data;
+    	mainpage.versPageAccueil();
+    	})
+		.catch(() => {
+		LoginPage.versLoginPage();
+		//snackbar:"Aucun utilisateur n'as été trouvé, veuillez vérifier votre saisie!"	
+		});
 	}
 
 	static creationUser(userName, password, passwordConfirm) {
@@ -50,9 +55,10 @@ export class Libs  {
 		
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
-		}).then(user => {
-    	return user;})
+		}).then(data => {
+    	return data;})
     	.catch(() => {});
+
 	}
 
 	static creationTopic(title, date, author_id) {
@@ -63,7 +69,7 @@ export class Libs  {
 		
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
-		}).then(user => {
+		}).then(data => {
     	})
     	.catch(() => {});
 	}
@@ -76,7 +82,7 @@ export class Libs  {
 		
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
-		}).then(user => {
+		}).then(data => {
     	})
     	.catch(() => {});
 	}
@@ -89,8 +95,7 @@ export class Libs  {
 
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
-		}).then(user => {
-		console.log(data);
+		}).then(data => {
     	return data;})
     	.catch(() => {});
 	}
@@ -104,7 +109,7 @@ export class Libs  {
 		new Promise((resolve, reject) => {
    	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
 		}).then(data => {
-    	})
+    	return data;})
     	.catch(() => {});
 	}
 
@@ -123,8 +128,6 @@ export class Libs  {
 	static getTopic(id){
 		getOne("topic",id);
 	}
-
-	
 
 	static getAllmessage (){
 		getAll("message");
