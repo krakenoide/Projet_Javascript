@@ -1,8 +1,13 @@
-import {Libs} from './Libs.js';
-import {Message} from './Message.js';
-import {User} from './User.js';
-import {Topic} from './Topic.js';
+import { Libs } from './Libs.js';
+import { Message } from './Message.js';
+import { User } from './User.js';
+import { Topic } from './Topic.js';
 import { HomePage } from './HomePage.js';
+import { CreationPage } from './CreationPage.js';
+import { TopicPage } from './TopicPage.js';
+import { LoginPage } from './LoginPage.js';
+import { Header } from './Header.js';
+
 
 
 export class ModifPage {
@@ -11,7 +16,7 @@ export class ModifPage {
 
     }
 
-    static vaVersModifPage() {
+    static versModifPage() {
         Libs.clearDisplay();
 
         let display = document.body;
@@ -32,23 +37,14 @@ export class ModifPage {
 
         buttonCreateUser.addEventListener("click", (event) => {
             event.preventDefault();
-            // let userActuel = Libs.loadUser();
-            // if(oldPassword.value == userActuel.password){
-            //     if(newPassword.value == null){
-            //         Libs.modifUser(username.value, oldPassword.value, oldPassword.value,oldPassword.value);
-                    
-            //     }
-            //     Libs.modifUser(username.value, newPassword.value, newPasswordBis.value,oldPassword.value);
-            //     let user = login(username.value, newPassword.value);
-            //     if (remember.checked) {
-            //         Libs.saveUser(user);
-            //     }
-            // } else {
-            //     // Libs.afficherSnackBar("Une erreur est survenue. Veuillez vérifier votre saisie");
-            //     vaVersModifPage();
-            // }
-
-            
+            let userActuel = Libs.loadUser();
+            let user;
+            if(newPassword.value == null){
+                user = Libs.modifUser(username.value, oldPassword.value, oldPassword.value,oldPassword.value);
+            } else {
+                user = Libs.modifUser(username.value, newPassword.value, newPasswordBis.value,oldPassword.value);
+            }
+        
             HomePage.versPageAccueil();
         });
 

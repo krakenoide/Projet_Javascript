@@ -1,10 +1,13 @@
 import { Message } from './Message.js';
 import { User } from './User.js';
 import { Topic } from './Topic.js';
+import { HomePage } from './HomePage.js';
 import { CreationPage } from './CreationPage.js';
 import { ModifPage } from './ModifPage.js';
 import { TopicPage } from './TopicPage.js';
 import { LoginPage } from './LoginPage.js';
+import { Header } from './Header.js';
+
 
 export class Libs  {
 
@@ -46,7 +49,7 @@ export class Libs  {
 		});
 	}
 
-	static creationUser(userName, password, passwordConfirm) {
+	static creationUser(username, password, passwordConfirm) {
 		const xhr = new XMLHttpRequest();
 		xhr.open("POST", "http://localhost:8080/api/user", true);
 		xhr.setRequestHeader("Content-Type", "application/json");
@@ -62,7 +65,26 @@ export class Libs  {
     		creationpage.versCreationPage();
     		afficherSnackbar("Echec de la création de l'utilisateur");	
     	});
+	}
 
+	static modifUser(username, newPassword, newPasswordBis, oldPassword){
+		const xhr = new XMLHttpRequest();
+		xhr.open("PATCH", "http://localhost:8080/api/user", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ username: `${username}`, password: `${newPassword}`, passwordConfirm:`${newPasswordBis}`,oldPassword:`${oldPassword}` }));
+		
+		new Promise((resolve, reject) => {
+   	 	xhr.onload = () => (xhr.status !== 200) ? reject() :resolve(JSON.parse(xhr.response));
+		}).then(data => {
+			Libs.saveUser(data);
+    		return data;
+			afficherSnackbar("Votre compte a bien été modifié");	
+    		versPageAccueil();
+		})
+    	.catch(() => {
+    		creationpage.versModifPage();
+    		afficherSnackbar("Une erreur est survenue. Veuillez vérifier votre saisie");	
+    	});
 	}
 
 	static creationTopic(title, date, author_id) {
@@ -129,32 +151,28 @@ export class Libs  {
     	});
 	}
 
-	static modifUser(username, newPassword, newPasswordBis, oldPassword){
-		
-	}
-
 	static getAllUser (){
-		getAll("user");
+		Libs.getAll("user");
 	}
 
 	static getUser (id){
-		getOne("user",id);
+		Libs.getOne("user",id);
 	}
 
 	static getAllTopic(){
-		getAll("topic");
+		Libs.getAll("topic");
 	}
 
 	static getTopic(id){
-		getOne("topic",id);
+		Libs.getOne("topic",id);
 	}
 
 	static getAllmessage (){
-		getAll("message");
+		Libs.getAll("message");
 	}
 
 	static getMessage(id) {
-		getOne("message",id);
+		Libs.getOne("message",id);
 	}
 
 	static testImportLib() {
@@ -174,6 +192,10 @@ export class Libs  {
 
 	static saveUser(user) {
 		localStorage.setItem("user",JSON.stringify(user));
+	}
+
+	static clearStorage(){
+		localStorage.clear();
 	}
 
 	static loadUser() {

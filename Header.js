@@ -10,7 +10,7 @@ import { LoginPage } from './LoginPage.js';
 
 export class Header {
 
-
+    
     static addHeaderButtonEventListenersini() {
         
         let buttonPageAccueil = document.getElementById('buttonPageAccueil');
@@ -48,7 +48,7 @@ export class Header {
         buttonModifCompte.addEventListener("click", function () {
             underlineTarget(event);
            
-            ModifPage.vaVersModifPage();
+            ModifPage.versModifPage();
 
         });
         let buttonLogout = document.getElementById('buttonLogout');
