@@ -5,8 +5,6 @@ import { Topic } from './Topic.js';
 
 function verscreationpage() {
 
-    let display = document.getElementById("display");
-
     let formulaire = document.createElement("form");
     display.appendChild(formulaire);
 
